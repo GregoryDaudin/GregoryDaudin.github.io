@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gregory Daudin · Senior Scrum Master</title>
+  <meta name="description" content="Gregory Daudin, Senior Scrum Master et Coach Agile. 16+ ans d'expérience dont 9 ans en transformation Agile et DevOps.">
+  <meta property="og:title" content="Gregory Daudin · Senior Scrum Master">
+  <meta property="og:description" content="Scrum Master, Coach Agile, Product Owner. Transformation Agile et DevOps.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f6f7f9;
+      --card: #ffffff;
+      --side: #f1f4fa;
+      --text: #1d2330;
+      --muted: #5c6577;
+      --accent: #2557d6;
+      --accent-soft: #e6edfc;
+      --line: #e3e6ec;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #11141a;
+        --card: #181c24;
+        --side: #1d222c;
+        --text: #e8ebf1;
+        --muted: #9aa3b5;
+        --accent: #7aa2ff;
+        --accent-soft: #24304a;
+        --line: #2a303b;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, sans-serif;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+    a { color: var(--accent); }
+    main {
+      max-width: 1040px;
+      margin: 40px auto;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    header { padding: 40px 48px 28px; border-bottom: 1px solid var(--line); }
+    h1 { margin: 0; font-size: 2.3rem; letter-spacing: -0.02em; }
+    .role { margin: 4px 0 10px; font-size: 1.15rem; color: var(--accent); font-weight: 600; letter-spacing: .02em; }
+    .tagline { margin: 0 0 16px; color: var(--muted); max-width: 70ch; }
+    .contact { display: flex; flex-wrap: wrap; gap: 6px 20px; margin: 0; padding: 0; list-style: none; font-size: .95rem; }
+    .contact a { color: var(--text); text-decoration: none; }
+    .contact a:hover { color: var(--accent); }
+    .print { float: right; font-size: .85rem; text-decoration: none; border: 1px solid var(--line); padding: 6px 12px; border-radius: 8px; }
+    .layout { display: grid; grid-template-columns: 300px 1fr; }
+    aside { background: var(--side); padding: 28px 28px 36px; border-right: 1px solid var(--line); }
+    .content { padding: 28px 48px 40px; }
+    h2 {
+      font-size: .78rem; text-transform: uppercase; letter-spacing: .12em;
+      color: var(--muted); margin: 28px 0 12px;
+    }
+    aside h2:first-child, .content h2:first-child { margin-top: 0; }
+    aside ul { margin: 0; padding-left: 18px; }
+    aside li { margin-bottom: 4px; }
+    .highlights { list-style: none; padding: 0 !important; }
+    .highlights li { margin-bottom: 10px; }
+    .highlights strong { display: block; font-size: 1.35rem; color: var(--accent); line-height: 1.2; }
+    .item { margin-bottom: 26px; }
+    .item-head { display: flex; justify-content: space-between; gap: 4px 12px; flex-wrap: wrap; align-items: baseline; }
+    .item h3 { margin: 0; font-size: 1.05rem; }
+    .item .where { color: var(--muted); font-weight: 500; }
+    .item .date { color: var(--muted); font-size: .88rem; white-space: nowrap; }
+    .item p { margin: 6px 0; }
+    .item ul { margin: 6px 0; padding-left: 20px; }
+    .item li { margin-bottom: 3px; }
+    .sub { margin: 10px 0 2px; font-weight: 600; font-size: .95rem; }
+    .result {
+      margin: 8px 0; padding: 8px 12px; border-left: 3px solid var(--accent);
+      background: var(--accent-soft); border-radius: 0 6px 6px 0; font-size: .95rem;
+    }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 8px 0 0; list-style: none; }
+    .tags li { border: 1px solid var(--line); border-radius: 999px; padding: 1px 10px; font-size: .8rem; color: var(--muted); }
+    .compact .item { margin-bottom: 10px; }
+    footer { padding: 16px; font-size: .8rem; color: var(--muted); text-align: center; border-top: 1px solid var(--line); }
+    @media (max-width: 820px) {
+      main { margin: 0; border: 0; border-radius: 0; }
+      header { padding: 28px 16px 20px; }
+      .layout { grid-template-columns: 1fr; }
+      aside { border-right: 0; border-bottom: 1px solid var(--line); padding: 24px 16px; }
+      .content { padding: 24px 16px 32px; }
+      h1 { font-size: 1.85rem; }
+      .print { float: none; display: inline-block; margin-bottom: 14px; }
+    }
+    @media print {
+      body { background: #fff; color: #000; font-size: 11px; }
+      main { margin: 0; border: 0; max-width: none; }
+      .print, footer { display: none; }
+      .item { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <a class="print" href="#" onclick="window.print();return false;">Télécharger en PDF</a>
+      <h1>Gregory Daudin</h1>
+      <p class="role">Senior Scrum Master</p>
+      <p class="tagline">Scrum Master, Coach Agile et Product Owner, bilingue anglais et français. J'accompagne les équipes dans leur transformation Agile et DevOps, avec un focus sur les métriques, le flux de livraison et la création de valeur.</p>
+      <ul class="contact">
+        <li>📍 Paris / Orléans</li>
+        <li>✉️ <a href="mailto:daudingregory@gmail.com">daudingregory@gmail.com</a></li>
+        <li>🔗 <a href="https://www.linkedin.com/in/gregorydaudin/">linkedin.com/in/gregorydaudin</a></li>
+      </ul>
+    </header>
+
+    <div class="layout">
+      <aside>
+        <h2>En bref</h2>
+        <ul class="highlights">
+          <li><strong>16+ ans</strong>d'expérience IT</li>
+          <li><strong>9 ans</strong>en transformation Agile et DevOps</li>
+          <li><strong>+50 %</strong>de livrables prêts en fin de PI (La Poste)</li>
+          <li><strong>3 sem. → 1 h</strong>pour livrer l'application Educonnect</li>
+        </ul>
+
+        <h2>Certifications</h2>
+        <ul>
+          <li>Professional Scrum Master II (PSM II)</li>
+          <li>Professional Scrum Master I (PSM I)</li>
+          <li>Professional Scrum with Kanban I (PSK I)</li>
+          <li>Professional Scrum Product Owner I (PSPO I)</li>
+          <li>Certified SAFe 6 DevOps Practitioner</li>
+          <li>Management 3.0</li>
+          <li>ITIL</li>
+          <li>BULATS C1 (Advanced)</li>
+        </ul>
+
+        <h2>Compétences clés</h2>
+        <ul>
+          <li><b>Frameworks :</b> Scrum, SAFe, Kanban, Lean</li>
+          <li><b>Produit :</b> roadmap, backlog, priorisation, Value Stream Mapping</li>
+          <li><b>Coaching :</b> facilitation, communication, gestion de conflits</li>
+          <li><b>Outils :</b> Jira, Confluence, Miro, Klaxoon, GitLab CI</li>
+        </ul>
+
+        <h2>Qualités</h2>
+        <ul>
+          <li>Leadership</li>
+          <li>Communicant</li>
+          <li>Esprit d'initiative</li>
+          <li>Pragmatique et data driven</li>
+        </ul>
+
+        <h2>Formation</h2>
+        <p style="margin:0"><b>Master 2 (Bac +5) Ingénierie des systèmes d'information</b><br>
+        CNAM, Orléans / Tours · 2015 – 2019<br>
+        <span style="color:var(--muted)">Cours du soir, spécialité systèmes décisionnels. Mémoire sur l'intégration et le déploiement continus par l'orchestration end to end des pipelines de release.</span></p>
+
+        <h2>Langues</h2>
+        <ul>
+          <li>Français · langue maternelle</li>
+          <li>Anglais · courant</li>
+        </ul>
+
+        <h2>Centres d'intérêt</h2>
+        <ul>
+          <li>Musique</li>
+          <li>Technologie</li>
+        </ul>
+      </aside>
+
+      <div class="content">
+        <h2>Expériences professionnelles</h2>
+
+        <div class="item">
+          <div class="item-head">
+            <h3>Scrum Master <span class="where">· Epex Spot, Paris</span></h3>
+            <span class="date">Avril 2025 – aujourd'hui</span>
+          </div>
+          <p>Au sein de l'équipe IT Foundation &amp; GCP, j'accompagne la structuration agile et l'amélioration continue des pratiques de delivery dans un environnement international et technique.</p>
+          <ul>
+            <li>Mise en place et animation du cadre Scrum (événements, board, refinement) sur des équipes techniques : DevOps, cloud, infrastructure, sécurité</li>
+            <li>Déploiement de métriques agiles (velocity, throughput, backlog health) et d'automatisations Jira pour améliorer la visibilité et la prise de décision produit</li>
+            <li>Coaching des équipes et du Product Owner sur la priorisation, la rédaction des tickets et l'alignement avec les objectifs produit</li>
+          </ul>
+          <p class="result"><b>En cours :</b> fonctionnement agile plus clair et prévisible, meilleure coordination avec les Product Units et roadmap pilotée en quarterly planning.</p>
+          <ul class="tags"><li>Jira</li><li>Backlog Management</li><li>DevOps</li><li>GCP · AWS · Azure</li><li>Platform Team</li><li>Agilité à l'échelle</li></ul>
+        </div>
+
+        <div class="item">
+          <div class="item-head">
+            <h3>Scrum Master <span class="where">· Société Générale (portage salarial)</span></h3>
+            <span class="date">Janvier – avril 2025</span>
+          </div>
+          <p>Accompagnement de 2 squads Agile sur un MVP stratégique : structuration des processus, collaboration entre les squads et le programme, définition de la roadmap produit. Mission écourtée suite à une réorganisation interne.</p>
+        </div>
+
+        <div class="item">
+          <div class="item-head">
+            <h3>Scrum Master &amp; Coach Agile SAFe <span class="where">· La Poste BGPN, Issy-les-Moulineaux</span></h3>
+            <span class="date">Mars 2024 – janvier 2025</span>
+          </div>
+          <p>Accompagnement de 2 Scrum Teams dans les trains « Data IA » et « Relation Client », et coaching à l'échelle du train « Relation Client » sur SAFe Essential.</p>
+          <p class="sub">Scrum Master SAFe</p>
+          <ul>
+            <li>Facilitation des cérémonies SAFe (Sprint Planning, Review, Retrospective, Daily, PI Planning, Inspect &amp; Adapt) et suivi des métriques (burndown, velocity)</li>
+            <li>Formation des équipes et des Product Owners aux pratiques Agile, Lean et Extreme Programming</li>
+            <li>Transition vers un flux continu Kanban, avec Flow Metrics et diagramme de flux cumulé pour détecter les goulots d'étranglement</li>
+          </ul>
+          <p class="result"><b>Résultat :</b> livrables prêts en fin de PI passés de 35 % à 85 %, et délais de livraison réduits.</p>
+          <p class="sub">Coach Agile SAFe</p>
+          <ul>
+            <li>Coaching des acteurs sur la gestion produit et l'amélioration continue</li>
+            <li>Gouvernance agile : Scrum of Scrums, Value Stream Mapping, User Story Mapping</li>
+            <li>Alignement stratégique et pilotage des roadmaps avec Jira Plans</li>
+          </ul>
+          <p class="result"><b>Résultat :</b> équipes plus autonomes, décisions plus fluides et alignement business piloté par la valeur livrée.</p>
+          <ul class="tags"><li>Dataiku</li><li>Python</li><li>Ansible</li><li>GitLab</li><li>Grafana</li><li>CI/CD</li><li>Jenkins</li><li>Klaxoon</li><li>MoSCoW</li><li>Kano</li></ul>
+        </div>
+
+        <div class="item">
+          <div class="item-head">
+            <h3>Scrum Master, Ingénieur DevOps, Product Owner <span class="where">· Ministère de l'Éducation nationale, Orléans</span></h3>
+            <span class="date">Mars 2020 – mars 2024</span>
+          </div>
+          <p>Accompagnement de 20 personnes sur la mise en place du DevOps et l'optimisation des pratiques agiles, pour la maintenance et l'évolution de 40 applications.</p>
+          <p class="sub">Scrum Master</p>
+          <ul>
+            <li>Mise en place du framework Scrum et des cérémonies agiles</li>
+            <li>Structuration du backlog et priorisation des évolutions avec les métiers</li>
+          </ul>
+          <p class="result"><b>Résultat :</b> backlog réduit de 400 à 50 user stories en un an, avec un focus sur l'automatisation et les tests (TDD).</p>
+          <p class="sub">Ingénieur DevOps</p>
+          <ul>
+            <li>Déploiement des pratiques CI/CD et amélioration des workflows de livraison</li>
+            <li>Automatisation des déploiements et optimisation du monitoring applicatif</li>
+            <li>Coordination entre les équipes de développement et d'exploitation</li>
+          </ul>
+          <p class="result"><b>Résultat :</b> livraisons de l'application Educonnect passées de 3 semaines à 1 heure.</p>
+          <p class="sub">Product Owner</p>
+          <ul>
+            <li>Gestion et priorisation du backlog, rédaction des user stories</li>
+            <li>Définition de la vision produit et alignement de la roadmap avec les besoins utilisateurs</li>
+          </ul>
+          <p class="result"><b>Résultat :</b> time-to-market réduit d'environ 30 %.</p>
+          <ul class="tags"><li>Ansible</li><li>Terraform</li><li>Docker</li><li>Kubernetes</li><li>GitLab CI</li><li>Jenkins</li><li>Kafka</li><li>TDD · BDD</li></ul>
+        </div>
+
+        <div class="item">
+          <div class="item-head">
+            <h3>Manager et auditeur agile <span class="where">· Néosoft, en parallèle des missions</span></h3>
+            <span class="date">Mars 2020 – janvier 2025</span>
+          </div>
+          <ul>
+            <li>Encadrement de 10 consultants : évolution de carrière et montée en compétences (82 % de satisfaction en enquête interne)</li>
+            <li>Audit de gouvernance projet et de maturité agile, avec recommandations stratégiques présentées aux clients</li>
+            <li>Contribution aux réponses à appels d'offres Agilité et DevOps</li>
+          </ul>
+        </div>
+
+        <h2>Parcours précédent</h2>
+        <div class="compact">
+          <div class="item"><div class="item-head"><h3>Ingénieur DevOps <span class="where">· EquensWorldline, Blois</span></h3><span class="date">Juin 2016 – mars 2020</span></div></div>
+          <div class="item"><div class="item-head"><h3>Analyste d'exploitation <span class="where">· Orange, Fleury-les-Aubrais</span></h3><span class="date">Sept. 2015 – juin 2016</span></div></div>
+          <div class="item"><div class="item-head"><h3>Support technique niveau 1 <span class="where">· BRGM, Orléans</span></h3><span class="date">Sept. 2012 – sept. 2015</span></div></div>
+          <div class="item"><div class="item-head"><h3>Support technique niveau 2 <span class="where">· GIP Recia, Orléans</span></h3><span class="date">Sept. 2009 – sept. 2012</span></div></div>
+        </div>
+
+        <h2>Activités complémentaires</h2>
+        <ul style="padding-left:20px;margin:0">
+          <li><b>Intervenant à l'ISC Orléans :</b> cours et ateliers sur l'agilité et la gestion de produit</li>
+          <li><b>Formateur Scrum et Agile :</b> préparation aux certifications PSM et PSPO, environ 95 % de réussite</li>
+          <li><b>Créateur de <a href="https://www.setlist.pro">setlist.pro</a> :</b> un produit pour aider les artistes indépendants à organiser le développement de leur carrière</li>
+        </ul>
+      </div>
+    </div>
+
+    <footer>Références disponibles sur demande · Mis à jour en octobre 2026</footer>
+  </main>
+</body>
+</html>
