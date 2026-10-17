@@ -8,280 +8,426 @@
   <meta property="og:title" content="Gregory Daudin · Senior Scrum Master">
   <meta property="og:description" content="Scrum Master, Coach Agile, Product Owner. Transformation Agile et DevOps.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f6f7f9;
+      --bg: #eef1f8;
       --card: #ffffff;
-      --side: #f1f4fa;
-      --text: #1d2330;
-      --muted: #5c6577;
-      --accent: #2557d6;
-      --accent-soft: #e6edfc;
-      --line: #e3e6ec;
+      --text: #1b2236;
+      --muted: #5d6680;
+      --line: #e4e8f1;
+      --primary: #4338ca;
+      --primary-soft: #eef0ff;
+      --teal: #0d9488;
+      --teal-soft: #e3f6f3;
+      --amber: #c2410c;
+      --amber-soft: #fff1e6;
+      --hero-1: #312e81;
+      --hero-2: #4338ca;
+      --hero-3: #0d9488;
     }
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #11141a;
-        --card: #181c24;
-        --side: #1d222c;
-        --text: #e8ebf1;
-        --muted: #9aa3b5;
-        --accent: #7aa2ff;
-        --accent-soft: #24304a;
-        --line: #2a303b;
+        --bg: #0d111c;
+        --card: #151b2b;
+        --text: #e7eaf3;
+        --muted: #9ba4bd;
+        --line: #252d42;
+        --primary: #a5b4fc;
+        --primary-soft: #232a4d;
+        --teal: #5eead4;
+        --teal-soft: #12302f;
+        --amber: #fdba74;
+        --amber-soft: #3a2616;
+        --hero-1: #1e1b4b;
+        --hero-2: #3730a3;
+        --hero-3: #0f766e;
       }
     }
     * { box-sizing: border-box; }
+    html[lang="fr"] .en, html[lang="en"] .fr { display: none !important; }
     body {
       margin: 0;
       background: var(--bg);
       color: var(--text);
       font-family: Inter, system-ui, -apple-system, sans-serif;
       font-size: 15px;
-      line-height: 1.55;
+      line-height: 1.6;
     }
-    a { color: var(--accent); }
-    main {
-      max-width: 1040px;
-      margin: 40px auto;
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 14px;
+    a { color: var(--primary); }
+    .page { max-width: 1060px; margin: 32px auto; padding: 0 16px; }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      background: linear-gradient(120deg, var(--hero-1), var(--hero-2) 55%, var(--hero-3));
+      color: #fff;
+      border-radius: 20px;
+      padding: 44px 48px 40px;
       overflow: hidden;
     }
-    header { padding: 40px 48px 28px; border-bottom: 1px solid var(--line); }
-    h1 { margin: 0; font-size: 2.3rem; letter-spacing: -0.02em; }
-    .role { margin: 4px 0 10px; font-size: 1.15rem; color: var(--accent); font-weight: 600; letter-spacing: .02em; }
-    .tagline { margin: 0 0 16px; color: var(--muted); max-width: 70ch; }
-    .contact { display: flex; flex-wrap: wrap; gap: 6px 20px; margin: 0; padding: 0; list-style: none; font-size: .95rem; }
-    .contact a { color: var(--text); text-decoration: none; }
-    .contact a:hover { color: var(--accent); }
-    .print { float: right; font-size: .85rem; text-decoration: none; border: 1px solid var(--line); padding: 6px 12px; border-radius: 8px; }
-    .layout { display: grid; grid-template-columns: 300px 1fr; }
-    aside { background: var(--side); padding: 28px 28px 36px; border-right: 1px solid var(--line); }
-    .content { padding: 28px 48px 40px; }
+    .hero::after {
+      content: ""; position: absolute; right: -80px; top: -80px; width: 280px; height: 280px;
+      border-radius: 50%; background: rgba(255,255,255,.08);
+    }
+    .toolbar { position: absolute; top: 20px; right: 24px; display: flex; gap: 8px; z-index: 1; }
+    .btn {
+      font: inherit; font-size: .82rem; font-weight: 600; cursor: pointer;
+      color: #fff; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.35);
+      padding: 6px 12px; border-radius: 999px; text-decoration: none;
+    }
+    .btn:hover { background: rgba(255,255,255,.26); }
+    .lang { display: inline-flex; padding: 3px; gap: 2px; }
+    .lang button { font: inherit; font-size: .8rem; font-weight: 700; border: 0; background: transparent; color: #fff; padding: 3px 10px; border-radius: 999px; cursor: pointer; opacity: .75; }
+    .lang button[aria-pressed="true"] { background: #fff; color: var(--hero-2); opacity: 1; }
+    .hero h1 { margin: 0; font-size: 2.6rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; }
+    .hero .role { margin: 6px 0 14px; font-size: 1.15rem; font-weight: 600; color: #c7f9ef; }
+    .hero .pitch { margin: 0 0 20px; max-width: 62ch; color: rgba(255,255,255,.88); }
+    .contact { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+    .contact li a, .contact li span {
+      display: inline-block; color: #fff; text-decoration: none; font-size: .9rem;
+      background: rgba(255,255,255,.12); border-radius: 999px; padding: 5px 14px;
+    }
+    .contact li a:hover { background: rgba(255,255,255,.24); }
+
+    /* KPIs */
+    .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: -26px 28px 0; position: relative; }
+    .kpi {
+      background: var(--card); border-radius: 14px; padding: 16px 18px;
+      box-shadow: 0 6px 20px rgba(30, 40, 90, .10); border: 1px solid var(--line);
+    }
+    .kpi strong { display: block; font-size: 1.55rem; font-weight: 800; line-height: 1.15; }
+    .kpi span { font-size: .85rem; color: var(--muted); }
+    .kpi:nth-child(1) strong { color: var(--primary); }
+    .kpi:nth-child(2) strong { color: var(--teal); }
+    .kpi:nth-child(3) strong { color: var(--amber); }
+    .kpi:nth-child(4) strong { color: var(--primary); }
+
+    /* Layout */
+    .layout { display: grid; grid-template-columns: 1fr 310px; gap: 24px; margin-top: 28px; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 28px 30px; }
+    aside { display: flex; flex-direction: column; gap: 24px; }
+    aside .card { padding: 22px 24px; }
+
     h2 {
-      font-size: .78rem; text-transform: uppercase; letter-spacing: .12em;
-      color: var(--muted); margin: 28px 0 12px;
+      display: flex; align-items: center; gap: 10px;
+      font-size: 1.05rem; font-weight: 700; margin: 0 0 18px;
     }
-    aside h2:first-child, .content h2:first-child { margin-top: 0; }
-    aside ul { margin: 0; padding-left: 18px; }
-    aside li { margin-bottom: 4px; }
-    .highlights { list-style: none; padding: 0 !important; }
-    .highlights li { margin-bottom: 10px; }
-    .highlights strong { display: block; font-size: 1.35rem; color: var(--accent); line-height: 1.2; }
-    .item { margin-bottom: 26px; }
-    .item-head { display: flex; justify-content: space-between; gap: 4px 12px; flex-wrap: wrap; align-items: baseline; }
-    .item h3 { margin: 0; font-size: 1.05rem; }
-    .item .where { color: var(--muted); font-weight: 500; }
-    .item .date { color: var(--muted); font-size: .88rem; white-space: nowrap; }
-    .item p { margin: 6px 0; }
-    .item ul { margin: 6px 0; padding-left: 20px; }
-    .item li { margin-bottom: 3px; }
-    .sub { margin: 10px 0 2px; font-weight: 600; font-size: .95rem; }
+    h2::before { content: ""; width: 6px; height: 22px; border-radius: 3px; background: var(--primary); }
+    h2.teal::before { background: var(--teal); }
+    h2.amber::before { background: var(--amber); }
+    .divider { border: 0; height: 1px; background: linear-gradient(90deg, var(--line), transparent); margin: 28px 0; }
+
+    /* Timeline */
+    .timeline { position: relative; padding-left: 26px; }
+    .timeline::before { content: ""; position: absolute; left: 6px; top: 6px; bottom: 6px; width: 2px; background: var(--line); }
+    .job { position: relative; padding-bottom: 26px; }
+    .job:last-child { padding-bottom: 0; }
+    .job::before {
+      content: ""; position: absolute; left: -26px; top: 5px; width: 14px; height: 14px; border-radius: 50%;
+      background: var(--card); border: 3px solid var(--primary);
+    }
+    .job.current::before { background: var(--primary); box-shadow: 0 0 0 4px var(--primary-soft); }
+    .job + .job { border-top: 1px dashed var(--line); padding-top: 24px; }
+    .job + .job::before { top: 29px; }
+    .job-head { display: flex; justify-content: space-between; align-items: baseline; gap: 4px 12px; flex-wrap: wrap; }
+    .job h3 { margin: 0; font-size: 1.08rem; }
+    .company { color: var(--primary); font-weight: 600; }
+    .date { font-size: .82rem; color: var(--muted); font-weight: 500; white-space: nowrap; }
+    .badge {
+      display: inline-block; vertical-align: middle; margin-left: 6px;
+      font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+      color: var(--teal); background: var(--teal-soft); padding: 2px 8px; border-radius: 999px;
+    }
+    .job p { margin: 6px 0 0; color: var(--muted); }
+    .job ul { margin: 8px 0 0; padding-left: 18px; }
+    .job li { margin-bottom: 3px; }
+    .job li::marker { color: var(--primary); }
     .result {
-      margin: 8px 0; padding: 8px 12px; border-left: 3px solid var(--accent);
-      background: var(--accent-soft); border-radius: 0 6px 6px 0; font-size: .95rem;
+      display: flex; gap: 10px; align-items: flex-start;
+      margin: 10px 0 0; padding: 9px 14px; border-radius: 10px;
+      background: var(--amber-soft); font-size: .92rem;
     }
-    .tags { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 8px 0 0; list-style: none; }
-    .tags li { border: 1px solid var(--line); border-radius: 999px; padding: 1px 10px; font-size: .8rem; color: var(--muted); }
-    .compact .item { margin-bottom: 10px; }
-    footer { padding: 16px; font-size: .8rem; color: var(--muted); text-align: center; border-top: 1px solid var(--line); }
-    @media (max-width: 820px) {
-      main { margin: 0; border: 0; border-radius: 0; }
-      header { padding: 28px 16px 20px; }
-      .layout { grid-template-columns: 1fr; }
-      aside { border-right: 0; border-bottom: 1px solid var(--line); padding: 24px 16px; }
-      .content { padding: 24px 16px 32px; }
-      h1 { font-size: 1.85rem; }
-      .print { float: none; display: inline-block; margin-bottom: 14px; }
+    .result b { color: var(--amber); white-space: nowrap; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 10px 0 0; list-style: none; }
+    .tags li { font-size: .75rem; font-weight: 500; color: var(--primary); background: var(--primary-soft); padding: 2px 10px; border-radius: 999px; }
+
+    .earlier { list-style: none; margin: 0; padding: 0; }
+    .earlier li { display: flex; justify-content: space-between; gap: 4px 12px; flex-wrap: wrap; padding: 8px 0; border-bottom: 1px solid var(--line); }
+    .earlier li:last-child { border-bottom: 0; }
+    .earlier .date { align-self: center; }
+
+    .side-list { list-style: none; margin: 0; padding: 0; }
+    .side-list li { padding: 5px 0 5px 22px; position: relative; }
+    .side-list li::before { content: "✓"; position: absolute; left: 0; color: var(--teal); font-weight: 700; }
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .chips span { font-size: .8rem; padding: 3px 11px; border-radius: 999px; background: var(--teal-soft); color: var(--teal); font-weight: 600; }
+    .chips.violet span { background: var(--primary-soft); color: var(--primary); }
+    .skill { margin-bottom: 12px; }
+    .skill:last-child { margin-bottom: 0; }
+    .skill b { display: block; font-size: .82rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 5px; }
+    .muted { color: var(--muted); font-size: .9rem; }
+    .extra { margin: 0; padding-left: 18px; }
+    .extra li { margin-bottom: 6px; }
+    .extra li::marker { color: var(--teal); }
+
+    footer { text-align: center; font-size: .8rem; color: var(--muted); padding: 24px 0 8px; }
+
+    @media (max-width: 860px) {
+      .page { margin: 0 auto; padding: 0; }
+      .hero { border-radius: 0; padding: 64px 16px 48px; }
+      .hero h1 { font-size: 2rem; }
+      .toolbar { left: 16px; right: auto; top: 16px; }
+      .kpis { grid-template-columns: repeat(2, 1fr); margin: -24px 16px 0; gap: 10px; }
+      .layout { grid-template-columns: 1fr; margin: 20px 16px 0; gap: 16px; }
+      aside { gap: 16px; }
+      .card, aside .card { padding: 22px 18px; }
     }
     @media print {
-      body { background: #fff; color: #000; font-size: 11px; }
-      main { margin: 0; border: 0; max-width: none; }
-      .print, footer { display: none; }
-      .item { break-inside: avoid; }
+      body { background: #fff; font-size: 10.5px; }
+      .page { margin: 0; max-width: none; padding: 0; }
+      .toolbar, footer { display: none; }
+      .hero, .kpi, .result, .tags li, .chips span, .badge { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .kpi { box-shadow: none; }
+      .job { break-inside: avoid; }
     }
   </style>
 </head>
 <body>
-  <main>
-    <header>
-      <a class="print" href="#" onclick="window.print();return false;">Télécharger en PDF</a>
+  <div class="page">
+    <header class="hero">
+      <div class="toolbar">
+        <div class="btn lang" role="group" aria-label="Langue / Language">
+          <button type="button" data-set-lang="fr" aria-pressed="true">FR</button>
+          <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <a class="btn" href="#" onclick="window.print();return false;"><span class="fr">PDF</span><span class="en">PDF</span></a>
+      </div>
       <h1>Gregory Daudin</h1>
-      <p class="role">Senior Scrum Master</p>
-      <p class="tagline">Scrum Master, Coach Agile et Product Owner, bilingue anglais et français. J'accompagne les équipes dans leur transformation Agile et DevOps, avec un focus sur les métriques, le flux de livraison et la création de valeur.</p>
+      <p class="role">Senior Scrum Master · <span class="fr">Coach Agile</span><span class="en">Agile Coach</span> · Product Owner</p>
+      <p class="pitch fr">J'aide les équipes tech à livrer plus vite et plus sereinement, grâce à l'agilité, au DevOps et à des métriques qui parlent. Bilingue français et anglais.</p>
+      <p class="pitch en">I help tech teams deliver faster and with less stress, through agility, DevOps and metrics that matter. Bilingual in French and English.</p>
       <ul class="contact">
-        <li>📍 Paris / Orléans</li>
-        <li>✉️ <a href="mailto:daudingregory@gmail.com">daudingregory@gmail.com</a></li>
-        <li>🔗 <a href="https://www.linkedin.com/in/gregorydaudin/">linkedin.com/in/gregorydaudin</a></li>
+        <li><span>📍 Paris · Orléans</span></li>
+        <li><a href="mailto:daudingregory@gmail.com">✉️ daudingregory@gmail.com</a></li>
+        <li><a href="https://www.linkedin.com/in/gregorydaudin/">in&nbsp; LinkedIn</a></li>
       </ul>
     </header>
 
+    <section class="kpis">
+      <div class="kpi"><strong>16+ <span class="fr" style="font-size:inherit;color:inherit">ans</span><span class="en" style="font-size:inherit;color:inherit">yrs</span></strong><span class="fr">d'expérience IT, dont 9 en agile</span><span class="en">in IT, 9 of them in agile</span></div>
+      <div class="kpi"><strong>35 → 85 %</strong><span class="fr">de livrables prêts en fin de PI</span><span class="en">of deliverables ready at PI end</span></div>
+      <div class="kpi"><strong>3 <span class="fr" style="font-size:inherit;color:inherit">sem.</span><span class="en" style="font-size:inherit;color:inherit">wks</span> → 1 h</strong><span class="fr">pour livrer une application</span><span class="en">to ship an application</span></div>
+      <div class="kpi"><strong>400 → 50</strong><span class="fr">user stories en backlog, en un an</span><span class="en">backlog user stories, in one year</span></div>
+    </section>
+
     <div class="layout">
+      <main>
+        <section class="card">
+          <h2><span class="fr">Expériences</span><span class="en">Experience</span></h2>
+          <div class="timeline">
+
+            <article class="job current">
+              <div class="job-head">
+                <h3>Scrum Master · <span class="company">Epex Spot</span><span class="badge">Freelance</span></h3>
+                <span class="date"><span class="fr">Avr. 2025 – aujourd'hui</span><span class="en">Apr 2025 – present</span> · Paris</span>
+              </div>
+              <p class="fr">Équipe IT Foundation &amp; GCP, dans un contexte international et très technique.</p>
+              <p class="en">IT Foundation &amp; GCP team, in an international and highly technical setting.</p>
+              <ul class="fr">
+                <li>Cadre Scrum pour des équipes DevOps, cloud, infra et sécurité</li>
+                <li>Métriques agiles et automatisations Jira pour piloter le produit</li>
+                <li>Coaching du Product Owner sur la priorisation et le backlog</li>
+              </ul>
+              <ul class="en">
+                <li>Scrum framework for DevOps, cloud, infrastructure and security teams</li>
+                <li>Agile metrics and Jira automations to steer the product</li>
+                <li>Coaching the Product Owner on prioritisation and backlog</li>
+              </ul>
+              <div class="result"><b class="fr">En cours</b><b class="en">Ongoing</b><span class="fr">Un delivery plus prévisible et une roadmap pilotée par trimestre.</span><span class="en">More predictable delivery and a quarterly-planned roadmap.</span></div>
+              <ul class="tags"><li>Jira</li><li>DevOps</li><li>GCP · AWS · Azure</li><li>Platform Team</li></ul>
+            </article>
+
+            <article class="job">
+              <div class="job-head">
+                <h3>Scrum Master · <span class="company">Société Générale</span><span class="badge">Freelance</span></h3>
+                <span class="date"><span class="fr">Janv. – avr. 2025</span><span class="en">Jan – Apr 2025</span> · Paris</span>
+              </div>
+              <p class="fr">Accompagnement de 2 squads sur un MVP stratégique : processus, collaboration avec le programme et roadmap produit.</p>
+              <p class="en">Supported 2 squads on a strategic MVP: processes, collaboration with the programme and product roadmap.</p>
+            </article>
+
+            <article class="job">
+              <div class="job-head">
+                <h3>Scrum Master &amp; <span class="fr">Coach Agile SAFe</span><span class="en">SAFe Agile Coach</span> · <span class="company">La Poste BGPN</span></h3>
+                <span class="date"><span class="fr">Mars 2024 – janv. 2025</span><span class="en">Mar 2024 – Jan 2025</span> · Issy-les-Moulineaux</span>
+              </div>
+              <p class="fr">2 Scrum Teams dans les trains « Data IA » et « Relation Client », coaching SAFe à l'échelle du train.</p>
+              <p class="en">2 Scrum Teams in the "Data AI" and "Customer Relations" trains, plus SAFe coaching at train level.</p>
+              <ul class="fr">
+                <li>Cérémonies SAFe, dont PI Planning et Inspect &amp; Adapt</li>
+                <li>Passage au flux Kanban, avec Flow Metrics et CFD</li>
+                <li>Gouvernance agile et roadmaps dans Jira Plans</li>
+              </ul>
+              <ul class="en">
+                <li>SAFe ceremonies, including PI Planning and Inspect &amp; Adapt</li>
+                <li>Move to Kanban flow, with Flow Metrics and CFD</li>
+                <li>Agile governance and roadmaps in Jira Plans</li>
+              </ul>
+              <div class="result"><b class="fr">Résultat</b><b class="en">Result</b><span class="fr">Livrables prêts en fin de PI passés de 35 % à 85 %.</span><span class="en">Deliverables ready at PI end rose from 35% to 85%.</span></div>
+              <ul class="tags"><li>SAFe</li><li>Kanban</li><li>Jira Plans</li><li>GitLab</li><li>Dataiku</li></ul>
+            </article>
+
+            <article class="job">
+              <div class="job-head">
+                <h3>Scrum Master · DevOps · PO · <span class="company"><span class="fr">Éducation nationale</span><span class="en">French Ministry of Education</span></span></h3>
+                <span class="date"><span class="fr">Mars 2020 – mars 2024</span><span class="en">Mar 2020 – Mar 2024</span> · Orléans</span>
+              </div>
+              <p class="fr">20 personnes accompagnées vers le DevOps et l'agilité, sur un parc de 40 applications.</p>
+              <p class="en">Guided 20 people towards DevOps and agility, across 40 applications.</p>
+              <ul class="fr">
+                <li>Mise en place de Scrum et priorisation avec les métiers</li>
+                <li>Pipelines CI/CD, déploiements automatisés et monitoring</li>
+                <li>Vision produit et roadmap alignées sur les utilisateurs</li>
+              </ul>
+              <ul class="en">
+                <li>Rolled out Scrum and prioritisation with business teams</li>
+                <li>CI/CD pipelines, automated deployments and monitoring</li>
+                <li>Product vision and roadmap aligned with users</li>
+              </ul>
+              <div class="result"><b class="fr">Résultats</b><b class="en">Results</b><span class="fr">Livraisons passées de 3 semaines à 1 h, backlog réduit de 400 à 50 stories, time-to-market −30 %.</span><span class="en">Releases cut from 3 weeks to 1 hour, backlog cut from 400 to 50 stories, time-to-market −30%.</span></div>
+              <ul class="tags"><li>Ansible</li><li>Terraform</li><li>Docker</li><li>Kubernetes</li><li>GitLab CI</li><li>TDD</li></ul>
+            </article>
+
+            <article class="job">
+              <div class="job-head">
+                <h3>Manager &amp; <span class="fr">auditeur agile</span><span class="en">agile auditor</span> · <span class="company">Néosoft</span></h3>
+                <span class="date"><span class="fr">Mars 2020 – janv. 2025</span><span class="en">Mar 2020 – Jan 2025</span></span>
+              </div>
+              <ul class="fr">
+                <li>Management de 10 consultants, avec 82 % de satisfaction</li>
+                <li>Audits de maturité agile et réponses à appels d'offres</li>
+              </ul>
+              <ul class="en">
+                <li>Managed 10 consultants, with 82% satisfaction</li>
+                <li>Agile maturity audits and bid responses</li>
+              </ul>
+            </article>
+          </div>
+
+          <hr class="divider">
+
+          <h2 class="teal"><span class="fr">Parcours précédent</span><span class="en">Earlier career</span></h2>
+          <ul class="earlier">
+            <li><span><b><span class="fr">Ingénieur DevOps</span><span class="en">DevOps Engineer</span></b> · EquensWorldline</span><span class="date">2016 – 2020</span></li>
+            <li><span><b><span class="fr">Analyste d'exploitation</span><span class="en">Operations Analyst</span></b> · Orange</span><span class="date">2015 – 2016</span></li>
+            <li><span><b><span class="fr">Support technique N1</span><span class="en">Level 1 Tech Support</span></b> · BRGM</span><span class="date">2012 – 2015</span></li>
+            <li><span><b><span class="fr">Support technique N2</span><span class="en">Level 2 Tech Support</span></b> · GIP Recia</span><span class="date">2009 – 2012</span></li>
+          </ul>
+
+          <hr class="divider">
+
+          <h2 class="amber"><span class="fr">Et aussi</span><span class="en">Also</span></h2>
+          <ul class="extra">
+            <li class="fr"><b>Intervenant à l'ISC Orléans</b> sur l'agilité et la gestion de produit</li>
+            <li class="en"><b>Lecturer at ISC Orléans</b> on agility and product management</li>
+            <li class="fr"><b>Formateur PSM et PSPO</b>, avec environ 95 % de réussite</li>
+            <li class="en"><b>PSM and PSPO trainer</b>, with a pass rate of about 95%</li>
+            <li class="fr"><b>Créateur de <a href="https://www.setlist.pro">setlist.pro</a></b>, un outil pour les artistes indépendants</li>
+            <li class="en"><b>Founder of <a href="https://www.setlist.pro">setlist.pro</a></b>, a tool for independent artists</li>
+          </ul>
+        </section>
+      </main>
+
       <aside>
-        <h2>En bref</h2>
-        <ul class="highlights">
-          <li><strong>16+ ans</strong>d'expérience IT</li>
-          <li><strong>9 ans</strong>en transformation Agile et DevOps</li>
-          <li><strong>+50 %</strong>de livrables prêts en fin de PI (La Poste)</li>
-          <li><strong>3 sem. → 1 h</strong>pour livrer l'application Educonnect</li>
-        </ul>
+        <section class="card">
+          <h2 class="teal"><span class="fr">Certifications</span><span class="en">Certifications</span></h2>
+          <ul class="side-list">
+            <li>PSM II · PSM I</li>
+            <li>PSPO I · PSK I</li>
+            <li>SAFe 6 DevOps Practitioner</li>
+            <li>Management 3.0</li>
+            <li>ITIL</li>
+            <li>BULATS C1</li>
+          </ul>
+        </section>
 
-        <h2>Certifications</h2>
-        <ul>
-          <li>Professional Scrum Master II (PSM II)</li>
-          <li>Professional Scrum Master I (PSM I)</li>
-          <li>Professional Scrum with Kanban I (PSK I)</li>
-          <li>Professional Scrum Product Owner I (PSPO I)</li>
-          <li>Certified SAFe 6 DevOps Practitioner</li>
-          <li>Management 3.0</li>
-          <li>ITIL</li>
-          <li>BULATS C1 (Advanced)</li>
-        </ul>
+        <section class="card">
+          <h2><span class="fr">Compétences</span><span class="en">Skills</span></h2>
+          <div class="skill">
+            <b>Frameworks</b>
+            <div class="chips violet"><span>Scrum</span><span>SAFe</span><span>Kanban</span><span>Lean</span></div>
+          </div>
+          <div class="skill">
+            <b><span class="fr">Produit</span><span class="en">Product</span></b>
+            <div class="chips violet"><span>Roadmap</span><span>Backlog</span><span><span class="fr">Priorisation</span><span class="en">Prioritisation</span></span><span>Value Stream</span></div>
+          </div>
+          <div class="skill">
+            <b>Coaching</b>
+            <div class="chips violet"><span>Facilitation</span><span>Communication</span><span><span class="fr">Gestion de conflits</span><span class="en">Conflict resolution</span></span></div>
+          </div>
+          <div class="skill">
+            <b><span class="fr">Outils</span><span class="en">Tools</span></b>
+            <div class="chips violet"><span>Jira</span><span>Confluence</span><span>Miro</span><span>Klaxoon</span><span>GitLab CI</span></div>
+          </div>
+        </section>
 
-        <h2>Compétences clés</h2>
-        <ul>
-          <li><b>Frameworks :</b> Scrum, SAFe, Kanban, Lean</li>
-          <li><b>Produit :</b> roadmap, backlog, priorisation, Value Stream Mapping</li>
-          <li><b>Coaching :</b> facilitation, communication, gestion de conflits</li>
-          <li><b>Outils :</b> Jira, Confluence, Miro, Klaxoon, GitLab CI</li>
-        </ul>
+        <section class="card">
+          <h2 class="amber"><span class="fr">Qualités</span><span class="en">Strengths</span></h2>
+          <div class="chips">
+            <span>Leadership</span>
+            <span><span class="fr">Communicant</span><span class="en">Communicator</span></span>
+            <span><span class="fr">Esprit d'initiative</span><span class="en">Proactive</span></span>
+            <span><span class="fr">Pragmatique</span><span class="en">Pragmatic</span></span>
+            <span>Data driven</span>
+          </div>
+        </section>
 
-        <h2>Qualités</h2>
-        <ul>
-          <li>Leadership</li>
-          <li>Communicant</li>
-          <li>Esprit d'initiative</li>
-          <li>Pragmatique et data driven</li>
-        </ul>
+        <section class="card">
+          <h2 class="teal"><span class="fr">Formation</span><span class="en">Education</span></h2>
+          <p style="margin:0"><b><span class="fr">Master 2 Ingénierie des systèmes d'information</span><span class="en">Master's degree in Information Systems Engineering</span></b></p>
+          <p class="muted" style="margin:4px 0 0">CNAM · 2015 – 2019<br><span class="fr">En cours du soir, en parallèle de ma carrière</span><span class="en">Evening classes, alongside full-time work</span></p>
+        </section>
 
-        <h2>Formation</h2>
-        <p style="margin:0"><b>Master 2 (Bac +5) Ingénierie des systèmes d'information</b><br>
-        CNAM, Orléans / Tours · 2015 – 2019<br>
-        <span style="color:var(--muted)">Cours du soir, spécialité systèmes décisionnels. Mémoire sur l'intégration et le déploiement continus par l'orchestration end to end des pipelines de release.</span></p>
-
-        <h2>Langues</h2>
-        <ul>
-          <li>Français · langue maternelle</li>
-          <li>Anglais · courant</li>
-        </ul>
-
-        <h2>Centres d'intérêt</h2>
-        <ul>
-          <li>Musique</li>
-          <li>Technologie</li>
-        </ul>
+        <section class="card">
+          <h2><span class="fr">Langues</span><span class="en">Languages</span></h2>
+          <ul class="side-list">
+            <li><span class="fr">Français · natif</span><span class="en">French · native</span></li>
+            <li><span class="fr">Anglais · courant</span><span class="en">English · fluent</span></li>
+          </ul>
+          <p class="muted" style="margin:14px 0 0"><span class="fr">Loisirs : musique et technologie</span><span class="en">Interests: music and technology</span></p>
+        </section>
       </aside>
-
-      <div class="content">
-        <h2>Expériences professionnelles</h2>
-
-        <div class="item">
-          <div class="item-head">
-            <h3>Scrum Master <span class="where">· Epex Spot, Paris</span></h3>
-            <span class="date">Avril 2025 – aujourd'hui</span>
-          </div>
-          <p>Au sein de l'équipe IT Foundation &amp; GCP, j'accompagne la structuration agile et l'amélioration continue des pratiques de delivery dans un environnement international et technique.</p>
-          <ul>
-            <li>Mise en place et animation du cadre Scrum (événements, board, refinement) sur des équipes techniques : DevOps, cloud, infrastructure, sécurité</li>
-            <li>Déploiement de métriques agiles (velocity, throughput, backlog health) et d'automatisations Jira pour améliorer la visibilité et la prise de décision produit</li>
-            <li>Coaching des équipes et du Product Owner sur la priorisation, la rédaction des tickets et l'alignement avec les objectifs produit</li>
-          </ul>
-          <p class="result"><b>En cours :</b> fonctionnement agile plus clair et prévisible, meilleure coordination avec les Product Units et roadmap pilotée en quarterly planning.</p>
-          <ul class="tags"><li>Jira</li><li>Backlog Management</li><li>DevOps</li><li>GCP · AWS · Azure</li><li>Platform Team</li><li>Agilité à l'échelle</li></ul>
-        </div>
-
-        <div class="item">
-          <div class="item-head">
-            <h3>Scrum Master <span class="where">· Société Générale (portage salarial)</span></h3>
-            <span class="date">Janvier – avril 2025</span>
-          </div>
-          <p>Accompagnement de 2 squads Agile sur un MVP stratégique : structuration des processus, collaboration entre les squads et le programme, définition de la roadmap produit. Mission écourtée suite à une réorganisation interne.</p>
-        </div>
-
-        <div class="item">
-          <div class="item-head">
-            <h3>Scrum Master &amp; Coach Agile SAFe <span class="where">· La Poste BGPN, Issy-les-Moulineaux</span></h3>
-            <span class="date">Mars 2024 – janvier 2025</span>
-          </div>
-          <p>Accompagnement de 2 Scrum Teams dans les trains « Data IA » et « Relation Client », et coaching à l'échelle du train « Relation Client » sur SAFe Essential.</p>
-          <p class="sub">Scrum Master SAFe</p>
-          <ul>
-            <li>Facilitation des cérémonies SAFe (Sprint Planning, Review, Retrospective, Daily, PI Planning, Inspect &amp; Adapt) et suivi des métriques (burndown, velocity)</li>
-            <li>Formation des équipes et des Product Owners aux pratiques Agile, Lean et Extreme Programming</li>
-            <li>Transition vers un flux continu Kanban, avec Flow Metrics et diagramme de flux cumulé pour détecter les goulots d'étranglement</li>
-          </ul>
-          <p class="result"><b>Résultat :</b> livrables prêts en fin de PI passés de 35 % à 85 %, et délais de livraison réduits.</p>
-          <p class="sub">Coach Agile SAFe</p>
-          <ul>
-            <li>Coaching des acteurs sur la gestion produit et l'amélioration continue</li>
-            <li>Gouvernance agile : Scrum of Scrums, Value Stream Mapping, User Story Mapping</li>
-            <li>Alignement stratégique et pilotage des roadmaps avec Jira Plans</li>
-          </ul>
-          <p class="result"><b>Résultat :</b> équipes plus autonomes, décisions plus fluides et alignement business piloté par la valeur livrée.</p>
-          <ul class="tags"><li>Dataiku</li><li>Python</li><li>Ansible</li><li>GitLab</li><li>Grafana</li><li>CI/CD</li><li>Jenkins</li><li>Klaxoon</li><li>MoSCoW</li><li>Kano</li></ul>
-        </div>
-
-        <div class="item">
-          <div class="item-head">
-            <h3>Scrum Master, Ingénieur DevOps, Product Owner <span class="where">· Ministère de l'Éducation nationale, Orléans</span></h3>
-            <span class="date">Mars 2020 – mars 2024</span>
-          </div>
-          <p>Accompagnement de 20 personnes sur la mise en place du DevOps et l'optimisation des pratiques agiles, pour la maintenance et l'évolution de 40 applications.</p>
-          <p class="sub">Scrum Master</p>
-          <ul>
-            <li>Mise en place du framework Scrum et des cérémonies agiles</li>
-            <li>Structuration du backlog et priorisation des évolutions avec les métiers</li>
-          </ul>
-          <p class="result"><b>Résultat :</b> backlog réduit de 400 à 50 user stories en un an, avec un focus sur l'automatisation et les tests (TDD).</p>
-          <p class="sub">Ingénieur DevOps</p>
-          <ul>
-            <li>Déploiement des pratiques CI/CD et amélioration des workflows de livraison</li>
-            <li>Automatisation des déploiements et optimisation du monitoring applicatif</li>
-            <li>Coordination entre les équipes de développement et d'exploitation</li>
-          </ul>
-          <p class="result"><b>Résultat :</b> livraisons de l'application Educonnect passées de 3 semaines à 1 heure.</p>
-          <p class="sub">Product Owner</p>
-          <ul>
-            <li>Gestion et priorisation du backlog, rédaction des user stories</li>
-            <li>Définition de la vision produit et alignement de la roadmap avec les besoins utilisateurs</li>
-          </ul>
-          <p class="result"><b>Résultat :</b> time-to-market réduit d'environ 30 %.</p>
-          <ul class="tags"><li>Ansible</li><li>Terraform</li><li>Docker</li><li>Kubernetes</li><li>GitLab CI</li><li>Jenkins</li><li>Kafka</li><li>TDD · BDD</li></ul>
-        </div>
-
-        <div class="item">
-          <div class="item-head">
-            <h3>Manager et auditeur agile <span class="where">· Néosoft, en parallèle des missions</span></h3>
-            <span class="date">Mars 2020 – janvier 2025</span>
-          </div>
-          <ul>
-            <li>Encadrement de 10 consultants : évolution de carrière et montée en compétences (82 % de satisfaction en enquête interne)</li>
-            <li>Audit de gouvernance projet et de maturité agile, avec recommandations stratégiques présentées aux clients</li>
-            <li>Contribution aux réponses à appels d'offres Agilité et DevOps</li>
-          </ul>
-        </div>
-
-        <h2>Parcours précédent</h2>
-        <div class="compact">
-          <div class="item"><div class="item-head"><h3>Ingénieur DevOps <span class="where">· EquensWorldline, Blois</span></h3><span class="date">Juin 2016 – mars 2020</span></div></div>
-          <div class="item"><div class="item-head"><h3>Analyste d'exploitation <span class="where">· Orange, Fleury-les-Aubrais</span></h3><span class="date">Sept. 2015 – juin 2016</span></div></div>
-          <div class="item"><div class="item-head"><h3>Support technique niveau 1 <span class="where">· BRGM, Orléans</span></h3><span class="date">Sept. 2012 – sept. 2015</span></div></div>
-          <div class="item"><div class="item-head"><h3>Support technique niveau 2 <span class="where">· GIP Recia, Orléans</span></h3><span class="date">Sept. 2009 – sept. 2012</span></div></div>
-        </div>
-
-        <h2>Activités complémentaires</h2>
-        <ul style="padding-left:20px;margin:0">
-          <li><b>Intervenant à l'ISC Orléans :</b> cours et ateliers sur l'agilité et la gestion de produit</li>
-          <li><b>Formateur Scrum et Agile :</b> préparation aux certifications PSM et PSPO, environ 95 % de réussite</li>
-          <li><b>Créateur de <a href="https://www.setlist.pro">setlist.pro</a> :</b> un produit pour aider les artistes indépendants à organiser le développement de leur carrière</li>
-        </ul>
-      </div>
     </div>
 
-    <footer>Références disponibles sur demande · Mis à jour en octobre 2026</footer>
-  </main>
+    <footer>
+      <span class="fr">Références disponibles sur demande · Mis à jour en octobre 2026</span>
+      <span class="en">References available on request · Updated October 2026</span>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var titles = { fr: "Gregory Daudin · Senior Scrum Master", en: "Gregory Daudin · Senior Scrum Master" };
+      function setLang(lang) {
+        root.lang = lang;
+        document.title = titles[lang];
+        document.querySelectorAll("[data-set-lang]").forEach(function (b) {
+          b.setAttribute("aria-pressed", b.dataset.setLang === lang ? "true" : "false");
+        });
+        try { localStorage.setItem("cv-lang", lang); } catch (e) {}
+        var url = new URL(location.href);
+        if (lang === "en") url.searchParams.set("lang", "en"); else url.searchParams.delete("lang");
+        history.replaceState(null, "", url);
+      }
+      document.querySelectorAll("[data-set-lang]").forEach(function (b) {
+        b.addEventListener("click", function () { setLang(b.dataset.setLang); });
+      });
+      var initial = new URLSearchParams(location.search).get("lang");
+      if (!initial) { try { initial = localStorage.getItem("cv-lang"); } catch (e) {} }
+      if (initial === "en" || initial === "fr") setLang(initial);
+    })();
+  </script>
 </body>
 </html>
